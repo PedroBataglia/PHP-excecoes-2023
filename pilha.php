@@ -13,9 +13,11 @@ function funcao2()
     for ($i = 1; $i <= 5; $i++) {
         echo $i . PHP_EOL;
     }
+    print_r(debug_backtrace());
     echo 'Saindo da função 2' . PHP_EOL;
 }
 
+//main
 echo 'Iniciando o programa principal' . PHP_EOL;
 funcao1();
 echo 'Finalizando o programa principal' . PHP_EOL;
