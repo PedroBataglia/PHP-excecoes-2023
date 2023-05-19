@@ -4,27 +4,26 @@ function funcao1()
 {
     echo 'Entrei na função 1' . PHP_EOL;
 
-
     try {
         funcao2();
     } catch (RuntimeException|DivisionByZeroError $problema) {
         echo "Na função 2, encontramos um problema" . PHP_EOL;
-
         echo $problema->getMessage(). PHP_EOL;
+        echo $problema->getTraceAsString();
+
+        throw new RuntimeException(
+            'Execução foi tratada, mas pera ai',
+        0,
+        new RuntimeException());
     }
 }
 
 function funcao2()
 {
     echo 'Entrei na função 2' . PHP_EOL;
-    $divisao = intdiv(5,0);
-    $arrayFixo = new SplFixedArray(2);
-    $arrayFixo[3] = "Valor";
 
-    for ($i = 1; $i <= 5; $i++) {
-        echo $i . PHP_EOL;
-    }
-    print_r(debug_backtrace());
+    throw new RuntimeException();
+
     echo 'Saindo da função 2' . PHP_EOL;
 }
 
