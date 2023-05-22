@@ -6,15 +6,11 @@ function funcao1()
 
     try {
         funcao2();
-    } catch (RuntimeException|DivisionByZeroError $problema) {
+    } catch (Exception |Error $problema) {
         echo "Na função 2, encontramos um problema" . PHP_EOL;
         echo $problema->getMessage(). PHP_EOL;
         echo $problema->getTraceAsString();
 
-        throw new RuntimeException(
-            'Execução foi tratada, mas pera ai',
-        0,
-        new RuntimeException());
     }
 }
 
@@ -22,7 +18,7 @@ function funcao2()
 {
     echo 'Entrei na função 2' . PHP_EOL;
 
-    throw new RuntimeException();
+    throw new BadFunctionCallException();
 
     echo 'Saindo da função 2' . PHP_EOL;
 }
